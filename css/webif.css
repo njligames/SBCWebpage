@@ -1,0 +1,785 @@
+/* If you want to edit this file, adhere to these rules:
+ *
+ * CSS is seperated by layout, font, and color. It might be a little more
+ * work, but keeping it grouped like this allows for easier implementation
+ * of things like the color switcher.
+ *
+ * The class/id layout is pretty good, though not perfect. We want the structure
+ * to be flexible --- it isn't about the current theme as much as allowing future
+ * themes to do whatever without changing anything but the CSS. Do NOT change
+ * a bunch of classes and ids in the form code without some discussion with
+ * the group.
+ *
+ */
+ 
+/* ---  Layout  --- */
+body, td, th, input, select {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+body {
+	background: #F7F7F7;
+	margin: 0 auto;
+	padding: 0pt;
+	min-width: 700px;
+}
+body a:link, body a:active, body a:visited {
+	color: #0000CC;
+}
+body a:hover {
+	color: #435370;
+}
+form {
+	margin: 0px;
+}
+p {
+	margin: 0 0 10px 0;
+}
+pre {
+	border: 0px solid #435370;
+	font-family: 'Courier New', Courier, monospace;
+	white-space: pre-wrap;
+	line-height: 10pt;
+	font-size: 9pt;
+}
+
+a { text-decoration: none; }
+
+dd {
+	margin-left: 1em;
+	margin-bottom: 0.2em;
+}
+
+img { border: 0; }
+
+option { padding-right: 1em; }
+
+th { text-align: left; }
+
+ul { list-style-type: none; }
+
+/* ---  Wrapper around everything  --- */
+#container {
+	position: relative;
+	min-height: 100%;
+	width: 100%;
+	min-width: 1000px;
+}
+
+/* ---  Header  --- */
+div#header {
+	height: 80px;
+	background-color: #51779e;
+	color: white;
+}
+#header h1 { 
+	margin: 0 0 0 1em;
+}
+
+/* ---  header pic  --- */
+#header #header-picture {
+	position: absolute;
+	top: 5px;
+	right: 160px;
+}
+/* ---  Short-status  --- */
+#header #short-status {
+	position: absolute;
+	top: 0;
+	right: 20px;
+	color: #ccc;
+}
+
+#short-status ul {
+	white-space: nowrap;
+}
+
+/* ---  Color switcher  --- */
+#colorswitcher {
+	position: absolute;
+	top: 11em;
+	right: 1.5em;
+	z-index: 100;
+}
+
+#colorswitcher div {
+	display: block;
+	float: right;
+	width: 1em;
+	height: 1em;
+	margin-left: 0.4em;
+	border: 1px solid Black;
+	cursor: pointer;
+}
+
+/* ---  Content  --- */
+/*#content {
+	position: relative;
+	padding: 0 2% 6.5em 2%;
+}*/
+div#content {
+	background: #FFFFFF url(../images/gradient.gif) repeat-x scroll left top;
+	border: 1px solid #DEDBD1;
+	margin: 20px 25px 10px 25px;
+	padding: 0 15px 15px 15px;
+}
+
+#content a { text-decoration: underline; }
+
+#content h2 {
+	font-size: 1.1em;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+/* center image and headline vertically */
+#content h2 * { vertical-align: middle; }
+
+#content h3 {
+	margin-bottom: 0.6em;
+	padding: 0.2em;
+	font-size: 1em;
+	background-color: #aac1d9;
+}
+
+#content h3.warning {
+	display: block;
+	color: #E7292C;
+	margin-bottom: 1em;
+	margin-left: 1%;
+	padding: 0.4em;
+	padding-left: 0.8em;
+	border-left: 0.5em solid #E7292C;
+	border-bottom: 1px solid #E7292C;
+	background-color: transparent;
+}
+
+#content .settings { margin-left: 1%; }
+
+#content .settings .clearfix {
+	clear: both;
+	margin-bottom: 1em;
+}
+
+#content .settings-content {
+	width: 54%;
+	padding-left: 10px;
+	padding-top: 15px;
+}
+
+#content select, #content input { margin-top: 0.1em; }
+
+/* help area */
+#content .settings-help {
+	width: 46%;
+}
+
+#content .settings-help2 {
+	width: 100%;
+	padding-left: 10px;
+}
+
+#content .settings-content h4, .settings-help h4, .settings-help2 h4 {
+	font-weight: bold;
+	font-size: 11px;
+	margin-bottom: 0.2em;
+}
+
+#content .settings-help p, .settings-help2 p {
+	margin-bottom: 0.6em;
+	font-size: 10px;
+	padding-right: 1em;
+}
+
+.more-help {
+	margin-right: 10%;
+	text-align: right;
+}
+
+.logarea pre {
+	padding-top: 10px;
+	padding-left: 10px;
+	height: 300px;
+	overflow: scroll;
+	border: 1px solid;
+	background: white;
+}
+
+/* ---  Save buttons  --- */
+#save {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	/*width: 15em;*/
+	text-align: right;
+	z-index: 50;
+}
+
+#save legend { display: none; }
+
+#save .page-save {
+	margin-top: 10px;
+}
+
+/* apply/clear/review area */
+#save .apply {
+	height: 4em;
+	background-color: #315579;
+	padding: 0.5em 1em 0.5em 0;
+	font-weight: bold;
+	line-height: 1.3em;
+}
+
+#save a { color: White; }
+
+#save a:hover {
+	background-color: #aac1d9;
+	text-decoration: underline;
+}
+
+/* ---  Footer  --- */
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 3.5em;
+	z-index: 0;
+	color: White;
+	background-color: #315579;
+	padding: 1em 0 0.5em 0;
+}
+
+#footer em { font-size: 0.8em; }
+
+#footer h3 {
+	font-weight: lighter;
+	font-size: 1.3em;
+}
+
+#footer * { margin-left: 4%; }
+
+/* ---  Page specific styling  --- */
+/* Packages page */
+.packages {
+	font-size: 0.8em;
+	text-align: left;
+}
+
+.repositories { font-size: 0.6em; }
+
+/* ---  General styling  --- */
+.separator { display: block; }
+
+.smalltext {
+	display: inline;
+	font-size: 0.9em;
+	font-weight: lighter;
+}
+
+
+.failed-validation {
+	display: inline;
+	width: 40%;
+	text-align: left;
+	font-size: 1.0em;
+	font-style: italic;
+	color: Red;
+}
+
+.warning,
+.update-available,
+.warning-light {
+	color: #9A2C2C;
+	display: inline;
+}
+
+/* background color for odd lines/list items */
+.odd { background-color: #E5E7E9; }
+
+/* Progressbar */
+.progressbar {
+	border: 1px solid #315579;
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+	padding: 2px;
+	font-size: 0.8em;
+}
+
+.progress {
+	background-color: #AAC1D9;
+	padding: 0.1em 0 0.1em 0;
+	display: block;
+	text-align: center;
+}
+
+.gradualshine {
+        filter:alpha(opacity=30);
+        -moz-opacity:0.3;
+}
+
+.balloonstyle{
+        position:absolute;
+        top: -500px;
+        left: 0;
+        padding: 5px;
+        visibility: hidden;
+        border:1px solid black;
+        font:normal 12px Verdana;
+        line-height: 18px;
+        z-index: 100;
+        background-color: white;
+        width: 200px;
+        /*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+        filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135,Strength=5);
+}
+
+#arrowhead{
+z-index: 99;
+position:absolute;
+top: -500px;
+left: 0;
+visibility: hidden;
+}
+
+input.flatbtn {
+	border: 1px solid #000000;
+	font-size:8pt;
+}
+
+#scrollBox {
+	position: absolute;
+	width: 90%;
+	margin: 0 auto;
+	font-size: 0.7em;
+}
+#outerscrollBox{
+	position: relative;
+        width: 50%; /*marquee width */
+        height: 20em; /*marquee height */
+        overflow: hidden;
+        border: 1px solid #ccc;
+        padding: 1em;
+        margin-top: 1em;
+}
+#scrollBox h1 {
+        font-weight: bold;
+        margin-bottom: 1em;
+}
+#scrollBox h2 { margin: 2em 0 1em; }
+#scrollBox h2 em {
+        font-weight: normal;
+        font-size: 0.9em;
+}
+#scrollBox ul {
+        list-style-type: disc;
+        list-style-position: inside;
+}
+#scrollBox p { margin-bottom: 0.5em; }
+#scrollBox li { margin: 0.8em; }
+
+#save_messages {
+	width: 600px;
+	margin-top: 1.5em;
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+	text-align: left;
+	font-size: 0.8em;
+	padding: 0.4em;
+	border-style: none;
+	border-spacing: 0;
+	border: thin solid black;
+}
+
+#save_messages h3 {
+	display: block;
+	font-size: 1.2em;
+	margin-bottom: 1em;
+	margin-left: 1%;
+	padding: 0.4em;
+	padding-left: 0.8em;
+	border-bottom: 2px solid #E7292C;
+	background-color: transparent;
+}
+
+/* styles for dmytro's new wireless survey page. Used in Kamikaze as of 02/08/07. */
+TR.wifiscantitle
+{
+	background-color: #999999;
+	font-family: serif;
+	font-weight: bold;
+	color: #ffffff;
+	text-align: center;
+}
+TR.wifiscanrow1
+{
+	font-family: serif;
+	font-size:12pt;
+	color: #000000;
+}
+TR.wifiscanrow2
+{
+	background-color: #E6E6E6;
+	font-family: serif;
+	font-size:12pt;
+	color: #000000;
+}
+
+.tabcont {
+	background-color: #EEEEEE;
+	padding: 15px;
+	border: 1px solid #DEDBD1;
+}
+.vncellbg, .vncell, .vncellreq, .vncellt {
+	background-color: #D6D6D6;
+	border-bottom: 1px solid #999999;
+	border-left: 1px solid #999999;
+	padding-right: 20px;
+	padding-left: 8px;
+}
+.listl {
+	background-color: #FCFCFC;
+	border-left: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	font-size: 11px;
+	padding-right: 6px;
+	padding-left: 6px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.listn {
+	background-color: #FCFCFC;
+	border-bottom: 1px solid #999999;
+	font-size: 11px;
+	padding-right: 6px;
+	padding-left: 6px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.listr, .listrc, .listrd, .listrcd {
+	background-color: #FCFCFC;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	font-size: 11px;
+	padding-right: 6px;
+	padding-left: 6px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.listrc, .listrcd {
+	text-align: center;
+}
+.listrpad {
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	font-size: 11px;
+	padding-right: 16px;
+	padding-left: 10px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.listn, .listbg {
+	font-size: 11px;
+	padding-right: 16px;
+	padding-left: 6px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.listbg {
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	background-color: #D9DEE8;
+}
+.listhdr, .listhdrlr, .listhdrr, .listhdrc {
+	background: #D6D6D6;
+	padding-right: 16px;
+	padding-left: 6px;
+	font-weight: bold;
+	border-bottom: 1px solid #999999;
+	font-size: 11px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.listhdrlr, .listhdrr, .listhdrc {
+	border-right: 1px solid #999999;
+	vertical-align: top;
+}
+.listhdrlr {
+	border-left: 1px solid #999999;
+}
+.listhdrc {
+	text-align: center;
+}
+.listhdr a {
+	color: #000000;
+}
+.listhdrr a {
+	color: #000000;
+}
+.listlrns, .listlr, .listlrd {
+	background-color: #FCFCFC;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	border-left: 1px solid #999999;
+	font-size: 11px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.listlr, .listlrd {
+	padding-right: 6px;
+	padding-left: 6px;
+}
+.listlrd, .listrd, .listrcd {
+	background-color: #E0E0E0;
+}
+.list {
+	font-size: 11px;
+	padding-left: 6px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.listb {
+	font-size: 11px;
+	padding-left: 6px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-bottom: 1px solid #999999;
+}
+.listt {
+	font-size: 11px;
+	padding-top: 5px;
+}
+.listhdrrns {
+	background-color: #BBBBBB;
+	padding-left: 6px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 6px;
+	font-weight: bold;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	font-size: 11px;
+}
+.listbgns {
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	font-size: 11px;
+	background-color: #D9DEE8;
+	padding-left: 6px;
+	padding-right: 4px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.listtopic {
+	font-size: 11px;
+	background-color: #435370;
+	padding-right: 16px;
+	padding-left: 6px;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.listtopic a:link, .listtopic a:active, .listtopic a:visited, .listtopic a:hover {
+	color: #c3d3f0
+}
+.listtopic a:hover {
+	color: #a3b3d0
+}
+.listcontent {
+	padding: 0;
+	border: 0;
+	background-color: #EEEEEE;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 9pt;
+}
+
+div#pagefooter {
+	margin: 5px 0px 20px 0px;
+	text-align: center;
+}
+div#pagefooter span {
+	font-size: 11px;
+	color: #777777;
+}
+div#pagefooter span a:link, div#pagefooter span a:active, div#pagefooter span a:visited {
+	color: #777777;
+}
+div#pagefooter span a:hover {
+	color: #999999;
+}
+.pgtitle {
+	font-size: 18px;
+	color: #777777;
+	font-weight: bold;
+}
+
+div#infobox, div#errorbox, div#warningbox, div#applybox input {
+	margin-bottom: 10px;
+}
+div#infobox table tr td.icon {
+	background-color: #687BA4;
+	width: 36px;
+}
+div#infobox table tr td.message {
+	background-color: #D9DEE8;
+	padding-left: 8px
+}
+div#errorbox table tr td.icon, div#warningbox table tr td.icon {
+	background-color: #A12A2A;
+	width: 36px;
+}
+div#errorbox table tr td.message, div#warningbox table tr td.message {
+	color: #CC0000;
+	background-color: #FFD9D1;
+	padding-left: 8px;
+	padding-top: 6px;
+	font-weight: bold;
+}
+
+/* ---  Navigation  --- */
+div#mainmenu {
+	/*position: absolute;
+	top: 80px;*/
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 28px;
+	background-color: #315579;
+	border-bottom: 1px solid #000000;
+}
+div#submenu {
+	/*position: absolute;
+	top: 108px;*/
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 20px;
+	background-color: #315579;
+	border-bottom: 1px solid #000000;
+}
+#navbarmenu, #navbarsubmenu {
+	margin: 0;
+	padding: 0 0 0 0;
+	line-height: 24px;
+}
+#navbarsubmenu {
+	line-height: 16px;
+}
+#navbarmenu li, #navbarsubmenu li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left;
+	font-size: 13px;
+	font-weight: bold;
+	background-color: #315579;
+}
+#navbarsubmenu li {
+	font-size: 11px;
+}
+#navbarmenu li a, #navbarsubmenu li a {
+	display: block;
+	padding: 2px 11px;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+#navbarmenu li a:hover, #navbarsubmenu li a:hover {
+	background-color: #aac1d9;
+}
+#navbarmenu .selected a, #navbarsubmenu .selected a { 
+	background-color: #224054;
+}
+
+div#loginpage {
+	background-image: url("login_bg.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	height: 100%;
+	width: 100%;
+}
+div#loginbox {
+	background: #FFFFFF url(gradient.gif) repeat-x scroll left top;
+	border: 1px solid #DEDBD1;
+	padding: 20px 25px 20px 25px;
+}
+
+div#swapusage .device, div#swapusage .total, div#swapusage .used,
+div#swapusage .free, div#diskusage .name, div#diskusage .total,
+div#diskusage .used, div#diskusage .free {
+	font-weight: bold;
+}
+div#diskusage .name {
+	font-size: 12px;
+}
+div#diskusage .capacity {
+	margin-left: 2px;
+}
+.progbarl, .progbarc, .progbarcf, .progbarr {
+	height: 14px;
+	border: 0px;
+	vertical-align: text-top;
+}
+.progbarl, .progbarr {
+	width: 2px;
+}
+.filebrowser table {
+	margin-left: 1em;
+	margin-right: 1em;
+	margin-bottom: 2.2em;
+	text-align: left;
+	font-size: 0.8em;
+	border-style: none;
+	border-spacing: 0;
+}
+.filebrowser td {
+	padding-left: 0.1em;
+	padding-right: 0.1em;
+}
+.filebrowser td.number {
+	text-align: right;
+}
+.filebrowser td.leftimage {
+	padding-left: 0em;
+}
+.filebrowser td.image {
+	text-align: center;
+}
+.filebrowser td.rightimage {
+	padding-right: 0em;
+}
+.filebrowser a.tooltip {
+	z-index: 3;
+}
+.filebrowser span.tooltip {
+	display: none;
+}
+.filebrowser a:hover.tooltip {
+	position: relative;
+}
+.filebrowser a:hover.tooltip span.tooltip {
+	z-index: 5;
+	display: block;
+	position: absolute;
+	top: 1.1em;
+	left: 1.8em;
+	width: 20em;
+	text-decoration: none;
+	padding: 3px;
+	border: 1px solid;
+	color: Black;
+	background-color: White;
+}
+
+.td40 {
+	width:40%;
+}
+
+.td50 {
+	width:50%;
+}
+
+.td60 {
+	width:60%;
+}

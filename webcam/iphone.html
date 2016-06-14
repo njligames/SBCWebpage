@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    	<title>Webcam Control</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="expires" content="-1" />
+		<meta name="viewport" content="height=device-height, width=device-width, maximum-scale=1.0" />
+		
+		<script language="javascript" type="text/javascript" src="/webcam.js"></script>
+		<script language="javascript">
+
+		function hideAddressBar()
+		{
+		  if(!window.location.hash)
+		  {
+			  if(document.height < window.outerHeight)
+			  {
+				  document.body.style.height = (window.outerHeight + 50) + 'px';
+			  }
+
+			  setTimeout( function(){ window.scrollTo(0, 1); }, 0 );
+		  }
+		}
+		
+		function resetpantilt() {
+			send_command('&id=10094855&value=1');
+			setTimeout( function(){ send_command('&id=10094854&value=1'); }, 1500 );
+		}
+
+		window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+		window.addEventListener("orientationchange", hideAddressBar );
+		
+	function send_command(cmd) {
+		AJAX_get('/?action=command&dest=0&plugin=0&group=1'+ cmd)
+      }
+
+      function KeyDown(ev) {
+        ev = ev || window.event;
+        pressed = ev.which || ev.keyCode;
+
+        switch (pressed) {
+          case 37:
+              send_command('&id=10094852&value=200');
+            break;
+          case 39:
+              send_command('&id=10094852&value=-200');
+            break;
+          case 38:
+              send_command('&id=10094853&value=-200');
+            break;
+          case 40:
+              send_command('&id=10094853&value=200');
+            break;
+          case 32:
+              resetpantilt();
+		      break;
+          default:
+              break;
+        }
+      }
+
+      document.onkeydown = KeyDown;
+
+    </script>
+
+<style>
+
+body 
+{
+	background-color: #555555;
+	margin: 0px;
+	-webkit-user-select: none;
+}
+
+#container
+{
+	/* Disable tap highlighting */
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	
+	/* Give some depth to the card */
+	-webkit-perspective: 600;
+}
+
+#webcam_img
+{
+	border-bottom: medium solid #333333;
+}
+
+</style>
+</head>
+<body>
+	<div id="container">
+    <center>
+      <img id="webcam_img" width="100%" src="/?action=stream" />
+    </center>
+
+    <form name="command_panel" action="" onsubmit="return false;">
+	
+	<table width=100%>
+	<tr valign=top>
+	<td>
+	
+	<table border=0 align="center">
+	<tr>
+	<td colspan=2 align=center>
+      <input type="button" value="^" onclick="send_command('&id=10094853&value=-300')" style="height: 35px; width: 60px">
+	</td>
+	</tr>
+	<tr>
+	<td align=right>
+      <input type="button" value="<" onclick="send_command('&id=10094852&value=300')" style="height: 35px; width: 60px">
+	</td>
+	<td align=left>
+      <input type="button" value=">" onclick="send_command('&id=10094852&value=-300')" style="height: 35px; width: 60px">
+	</td>
+	</tr>
+	<tr>
+	<td colspan=2 align=center>
+      <input type="button" value="v" onclick="send_command('&id=10094853&value=300')" style="height: 35px; width: 60px">
+	</td>
+	</tr>
+	
+	</table>
+	  </td></tr>
+	<tr><td align="right">
+      <input type="button" value="Reset Pan / Tilt" onclick="resetpantilt()">
+	  
+	  </td></tr>
+	  </table>
+	  
+    </form>
+</div>
+  </body>
+</html>
